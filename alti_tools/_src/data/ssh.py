@@ -7,6 +7,16 @@ URL_DUACS = "https://ige-meom-opendap.univ-grenoble-alpes.fr/thredds/fileServer/
 URL_MIOST = "https://ige-meom-opendap.univ-grenoble-alpes.fr/thredds/fileServer/meomopendap/extract/ocean-data-challenges/dc_data1/dc_mapping/2020a_SSH_mapping_NATL60_MIOST_swot_en_j1_tpn_g2.nc"
 URL_test = "https://raw.githubusercontent.com/adekunleoajayi/powerspec/master/powerspec/test/test_data.nc"
 
+# OSSE OCEANIX DATASETS
+
+URL_OSSE_OBS_BOTH_SSH = "https://s3.us-east-1.wasabisys.com/melody/osse_data/data/gridded_data_swot_wocorr/dataset_nadir_0d_swot.nc"
+URL_OSSE_OBS_NADIR_SSH = "https://s3.us-east-1.wasabisys.com/melody/osse_data/data/gridded_data_swot_wocorr/dataset_nadir_0d.nc"
+URL_OSSE_OBS_SWOT_SSH = "https://s3.us-east-1.wasabisys.com/melody/osse_data/data/gridded_data_swot_wocorr/dataset_swot.nc"
+URL_OSSE_DUACS_SSH = "https://s3.us-east-1.wasabisys.com/melody/osse_data/oi/ssh_NATL60_swot_4nadir.nc"
+URL_OSSE_NATL60_SSH = "https://s3.us-east-1.wasabisys.com/melody/osse_data/ref/NATL60-CJM165_GULFSTREAM_ssh_y2013.1y.nc"
+URL_OSSE_NATL60_SST = "https://s3.us-east-1.wasabisys.com/melody/osse_data/ref/NATL60-CJM165_GULFSTREAM_sst_y2013.1y.nc"
+URL_OSSE_NATL60_SSC = "https://s3.us-east-1.wasabisys.com/melody/osse_data/ref/NATL60-CJM165_GULFSTREAM_sss_y2013.1y.nc"
+
 def get_ssh_url(dataset: str="natl60")->str:
     if dataset.lower() == "natl60":
         return URL_NATL60
@@ -24,5 +34,9 @@ def get_ssh_url(dataset: str="natl60")->str:
 
 def download_ssh_toy(dataset: str="natl60", *args, **kwargs) -> None:    
     url = get_ssh_url(dataset)
-    runcmd(f"wget -N {url}",  *args, **kwargs)
+    runcmd(f"wget -nc {url}",  *args, **kwargs)
+    return None
+
+def download_osse_demo(dataset: str="", *args,) -> None:
+
     return None
