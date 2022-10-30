@@ -17,6 +17,14 @@ URL_OSSE_NATL60_SSH = "https://s3.us-east-1.wasabisys.com/melody/osse_data/ref/N
 URL_OSSE_NATL60_SST = "https://s3.us-east-1.wasabisys.com/melody/osse_data/ref/NATL60-CJM165_GULFSTREAM_sst_y2013.1y.nc"
 URL_OSSE_NATL60_SSC = "https://s3.us-east-1.wasabisys.com/melody/osse_data/ref/NATL60-CJM165_GULFSTREAM_sss_y2013.1y.nc"
 
+# QG SIMULATIONS
+URL_QG_IDEAL_SIMPLE_128 = "https://ige-meom-opendap.univ-grenoble-alpes.fr//thredds/fileServer/meomopendap/extract/dc2022b_q/qgsim_simple_128x128.nc"
+URL_QG_IDEAL_FORCING_128 = "https://ige-meom-opendap.univ-grenoble-alpes.fr//thredds/fileServer/meomopendap/extract/dc2022b_q/qgsim_forcing_128x128.nc"
+URL_QG_IDEAL_COMPLEX_128 = "https://ige-meom-opendap.univ-grenoble-alpes.fr//thredds/fileServer/meomopendap/extract/dc2022b_q/qgsim_complex_128x128.nc"
+URL_QG_IDEAL_COMPLEX_256 = "https://ige-meom-opendap.univ-grenoble-alpes.fr//thredds/fileServer/meomopendap/extract/dc2022b_q/trial_res/qgsim_complex_256x256_L2_D2.nc"
+URL_QG_IDEAL_COMPLEX_128 = "https://ige-meom-opendap.univ-grenoble-alpes.fr//thredds/fileServer/meomopendap/extract/dc2022b_q/trial_res/qgsim_complex_128x128_L1_D1.nc"
+URL_QG_IDEAL_SIMPLE_128_1000s = "https://ige-meom-opendap.univ-grenoble-alpes.fr//thredds/fileServer/meomopendap/extract/dc2022b_q/qgsim_simple_128x128_dt1000.nc"
+
 def get_ssh_url(dataset: str="natl60")->str:
     if dataset.lower() == "natl60":
         return URL_NATL60

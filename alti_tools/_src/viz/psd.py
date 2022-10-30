@@ -5,13 +5,13 @@ import seaborn as sns
 sns.set_context(context="talk", font_scale=0.7)
 
 
-def plot_psd_wavenumber(da: xr.DataArray):
+def plot_psd_wavenumber(da: xr.DataArray, freq_scale: float=1, psd_scale: float=1):
     
     fig, ax = plt.subplots()
 
     ax.plot( 
-        da.freq_r,
-        da,
+        da.freq_r*freq_scale,
+        da*psd_scale,
         label=getattr(da, "label", None)
     )
 
@@ -21,24 +21,19 @@ def plot_psd_wavenumber(da: xr.DataArray):
         ylabel="PSD [m$^{2}$/cycles/m]",
     )
 
-    secax = ax.secondary_xaxis('top', functions=(lambda x: 1/(x+1e-20), lambda x: 1/(x+1e-20)))
-    secax.xaxis.set_major_formatter('{x:.0f}')
-    secax.set(xlabel="Wavelength [km]")
-
-
     ax.legend()
     ax.grid(which="both", alpha=0.5)
     
     return fig, ax
 
 
-def plot_psd_wavelength(da: xr.DataArray):
+def plot_psd_wavelength(da: xr.DataArray, freq_scale: float=1, psd_scale: float=1):
     
     fig, ax = plt.subplots()
 
     ax.plot( 
-        1/da.freq_r,
-        da,
+        1/da.freq_r*freq_scale,
+        da*psd_scale,
         label=getattr(da, "label", None)
     )
 
@@ -57,13 +52,14 @@ def plot_psd_wavelength(da: xr.DataArray):
     
     return fig, ax
 
-def plot_psd(da: xr.DataArray):
+
+def plot_psd(da: xr.DataArray, freq_scale: float=1, psd_scale: float=1):
     
     fig, ax = plt.subplots()
 
     ax.plot( 
-        da.freq_r,
-        da,
+        da.freq_r*freq_scale,
+        da*psd_scale,
         label=getattr(da, "label", None)
     )
 

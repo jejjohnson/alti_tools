@@ -38,13 +38,13 @@ def coords_degree_2_meters(ds):
     """
     
     try:
-        ds = ds.assign_coords(coords={"lat": ds["lat"] * 111.0})
+        ds = ds.assign_coords(coords={"lat": ds["lat"] * 111e3})
         ds.lat.attrs["units"] = "m"
     except:
         pass
     
     try:
-        ds = ds.assign_coords(coords={"lon": ds["lon"] * 111.0})
+        ds = ds.assign_coords(coords={"lon": ds["lon"] * 111e3})
         ds.lon.attrs["units"] = "m"
     except:
         pass
