@@ -3,7 +3,7 @@ import pandas as pd
 from ..utils.tracking import get_current_timestamp
 
 
-def preprocess_karin_swot(ds: xr.Dataset, author: str=""):
+def preprocess_karin_swot(ds: xr.Dataset, author: str = ""):
 
     # reset coordinates
     # ds = ds.reset_coords(["nC"])
@@ -24,10 +24,10 @@ def preprocess_karin_swot(ds: xr.Dataset, author: str=""):
     ds["time"] = pd.to_datetime(ds["time"])
 
     # modify attributes (author, datetime processing)
-    mods = dict()
-    mods["author"] = author
-    mods["time"] = get_current_timestamp()
-    mods["description"] = f"Alongtrack conversion: Flattened Array, Swapped dimensions, Sorted wrt time, pandas datetime"
-    ds.attrs["mods_pre"] = mods
+    ds.attrs["mods_author"] = author
+    ds.attrs["mods_time"] = get_current_timestamp()
+    ds.attrs[
+        "mods_desc"
+    ] = f"Alongtrack conversion: Flattened Array, Swapped dimensions, Sorted wrt time, pandas datetime"
 
     return ds
