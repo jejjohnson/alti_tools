@@ -5,7 +5,7 @@ import seaborn as sns
 sns.set_context(context="talk", font_scale=0.7)
 
 
-def plot_psd_wavenumber(da: xr.DataArray, freq_scale: float=1, psd_scale: float=1):
+def plot_psd_wavenumber(da: xr.DataArray, freq_scale: float=1e3, psd_scale: float=1):
     
     fig, ax = plt.subplots()
 

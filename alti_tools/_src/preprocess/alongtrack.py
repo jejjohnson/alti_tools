@@ -1,1 +1,0 @@
-# def extract_gridded_coords

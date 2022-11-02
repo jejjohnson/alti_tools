@@ -22,21 +22,12 @@ def get_obs_exp_files(obs_dir: str, experiment: str="nadir1") -> List[str]:
     """
 
     data_config = get_data_config()
-
+    
     obs_files = list(map(lambda x: Path(obs_dir).joinpath(x), data_config[experiment]))
 
     return obs_files
 
 
-def load_alongtrack_parallel(files: List[str], preprocess=None) -> xr.Dataset:
-    with warnings.catch_warnings():
-        warnings.simplefilter("ignore", category=PerformanceWarning)
-        # Note: there is an annoying performance memory due to the chunking
-
-        ds = xr.open_mfdataset(files, combine='nested', concat_dim='time', parallel=True, preprocess=preprocess, engine="netcdf4")
-        ds = ds.sortby("time")
-
-    return ds
 
 
 def load_eval_ds(path: str):
