@@ -19,21 +19,12 @@ from loguru import logger
 import time
 from pathlib import Path
 
-from alti_tools._src.data.osse import check_osse_files
 
-# Altitools
-from alti_tools._src.data.ssh import download_ssh_toy
-from alti_tools._src.transforms import spatial, temporal
-from alti_tools._src.viz import psd as psd_plots
+from alti_tools._src.data.natl60.osse import check_osse_files
 from alti_tools._src.preprocess.swot import preprocess_karin_swot
-from alti_tools._src.utils.tracking import get_current_timestamp
-from alti_tools._src.utils.files import list_all_files, check_list_equal_elem
-from alti_tools._src.utils.files import check_if_directory, check_if_file
-from alti_tools._src.data.configs.altimetry import (
-    get_raw_altimetry_config,
-    get_raw_altimetry_files,
-)
-from alti_tools._src.data.swot import load_alongtrack_parallel, load_xr_datasets_list
+from alti_tools._src.data.configs.altimetry import get_raw_altimetry_files
+from alti_tools._src.data.io import load_xr_datasets_list
+
 
 FLAGS = flags.FLAGS
 
@@ -43,6 +34,11 @@ flags.DEFINE_string(
     "dir_obs_save",
     str(root.joinpath("datasets")),
     "the experimental",
+)
+flags.DEFINE_string(
+    "author",
+    "",
+    "author tag for the dataset generation",
 )
 
 
@@ -75,7 +71,7 @@ def main(_):
     ds_karin_swot = xr.open_dataset(file_path[0])
 
     logger.info("Preprocess KARIN SWOT dataset...")
-    ds_karin_swot = preprocess_karin_swot(ds_karin_swot, author="Emmanuel")
+    ds_karin_swot = preprocess_karin_swot(ds_karin_swot, author=FLAGS.author)
 
     logger.debug("Checking size of swot data...")
     assert ds_karin_swot.coords["time"].shape == (8_412_216,)

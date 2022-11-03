@@ -1,6 +1,6 @@
 import xarray as xr
 import pandas as pd
-from ..utils.tracking import get_current_timestamp
+from alti_tools._src.utils.tracking import get_current_timestamp
 
 
 def preprocess_karin_swot(ds: xr.Dataset, author: str = ""):
