@@ -1,6 +1,20 @@
 import numpy as np
 
 
+def convert_lon_360_180(lon: np.ndarray) -> np.ndarray:
+    """This converts the longitude coordinates from
+    0:360 to -180:180
+
+    Args:
+        lon (np.ndarray): the longitude coordinates (0, 360)
+
+    Returns:
+        np.ndarray: the longitude coordinates (0, 360)
+    """
+    return ( (lon+180) % 360) - 180
+
+
+
 def spherical_to_cartesian_3d(lon, lat, radius: float=6371.010):
     
     x = radius * np.cos(lat) * np.cos(lon)
@@ -30,7 +44,6 @@ def correct_coordinate_labels(ds):
         pass
 
     return ds
-
 
 
 def coords_degree_2_meters(ds):

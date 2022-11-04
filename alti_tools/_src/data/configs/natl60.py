@@ -22,7 +22,7 @@ def get_osse_2020a_setup() -> config_dict.ConfigDict:
         "2020a_SSH_mapping_NATL60_karin_swot.nc",
         "2020a_SSH_mapping_NATL60_nadir_swot.nc",
     ]
-    config.swot1nadir4 = [
+    config.swot1nadir5 = [
         "2020a_SSH_mapping_NATL60_karin_swot.nc",
         "2020a_SSH_mapping_NATL60_nadir_swot.nc",
         "2020a_SSH_mapping_NATL60_topex-poseidon_interleaved.nc",
@@ -42,6 +42,15 @@ def get_osse_2020a_preprocess():
     # training scenario
     config.data = data = config_dict.ConfigDict()
     data = "swothnadir4"  # "nadir1", "nadir4", "swot", "swothnadir4"
+
+    ##########################
+    # Temporal Coarsen
+    ##########################
+    config.coarsen = coarsen = config_dict.ConfigDict()
+    coarsen.coarsen = False
+    coarsen.boundary = "trim"
+    coarsen.time_steps = 5
+    coarsen.summary = "mean"
 
     ##########################
     # Spatial Temporal Subset

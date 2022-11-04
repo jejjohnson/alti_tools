@@ -25,6 +25,7 @@ from alti_tools._src.preprocess.swot import preprocess_karin_swot
 from alti_tools._src.data.configs.altimetry import get_raw_altimetry_files
 from alti_tools._src.data.io import load_xr_datasets_list
 
+# TODO: Make Check and/or make directories
 
 FLAGS = flags.FLAGS
 
