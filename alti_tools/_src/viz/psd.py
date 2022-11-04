@@ -1,6 +1,6 @@
-import xarray as xr
 import matplotlib.pyplot as plt
 import seaborn as sns
+import xarray as xr
 
 sns.set_context(context="talk", font_scale=0.7)
 

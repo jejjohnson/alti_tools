@@ -1,6 +1,7 @@
-from ml_collections import config_dict
 from pathlib import Path
 from typing import List
+
+from ml_collections import config_dict
 
 
 def get_raw_altimetry_files(obs_dir: str=None, dataset: str="nadir") -> List[str]:

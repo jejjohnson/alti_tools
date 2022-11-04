@@ -1,5 +1,5 @@
-from typing import List
 from pathlib import Path
+from typing import List
 
 
 def check_if_directory(directory: str):

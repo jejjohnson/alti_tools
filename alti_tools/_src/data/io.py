@@ -1,10 +1,10 @@
 import subprocess
-import xarray as xr
-from typing import List, Optional
-from dask.array.core import PerformanceWarning
-from pathlib import Path
 import warnings
+from pathlib import Path
+from typing import List, Optional
 
+import xarray as xr
+from dask.array.core import PerformanceWarning
 
 # def load_data(path, data: str | List[str]):
 

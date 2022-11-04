@@ -1,21 +1,22 @@
-import os
-from pathlib import Path
 import json
-import xarray as xr
-import numpy as np
-from alti_tools._src.utils.files import (
-    check_if_directory,
-    list_all_files,
-    check_if_file,
-    check_list_equal_elem,
-)
-from alti_tools._src.utils.paths import get_root_path
+import os
 import warnings
+from pathlib import Path
 from typing import List
+
+import numpy as np
+import xarray as xr
 from dask.array.core import PerformanceWarning
 
 from alti_tools._src.data.configs.natl60 import get_osse_2020a_setup
-from alti_tools._src.utils.files import get_subset_elements
+from alti_tools._src.utils.files import (
+    check_if_directory,
+    check_if_file,
+    check_list_equal_elem,
+    get_subset_elements,
+    list_all_files,
+)
+from alti_tools._src.utils.paths import get_root_path
 
 
 def get_swot_obs_setup_files(files: List[str], setup: str = "nadir1"):

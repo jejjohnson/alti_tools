@@ -1,6 +1,5 @@
 from typing import List
 
-
 OSSE_2020b_NATL0_ref = [
     "NATL60-CJM165_GULFSTREAM_y2013m09d30.1h_SSH.nc",
     "NATL60-CJM165_GULFSTREAM_y2013m09d29.1h_SSH.nc",

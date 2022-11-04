@@ -1,6 +1,6 @@
-from typing import Optional
 import datetime
 from datetime import timezone
+from typing import Optional
 
 
 def get_current_timestamp(tz: Optional[timezone]=timezone.utc) -> str:

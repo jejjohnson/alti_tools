@@ -1,6 +1,7 @@
 from typing import List
-import pandas as pd
+
 import numpy as np
+import pandas as pd
 
 
 def array_2_df(coords, data, names: List[str]=["data"]):
