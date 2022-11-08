@@ -7,16 +7,16 @@ from alti_tools._src.utils.tracking import get_current_timestamp
 def preprocess_karin_swot(ds: xr.Dataset, author: str = ""):
 
     # reset coordinates
-    # ds = ds.reset_coords(["nC"])
+    ds = ds.rename({"time": "z"})
 
     # flatten dataset [NC, Time] -> [NC x Time]
-    ds = ds.stack(z=("nC", "time")).dropna(dim="z").reset_index("time")
+    ds = ds.stack(time=("nC", "z")).dropna(dim="time").reset_index("time")
 
     # rename coordinate
-    ds = ds.swap_dims({"z": "time"})
+    ds = ds.rename({"z": "time"}).set_coords(names="time")
 
     # reset coordinates
-    ds = ds.reset_coords(["z"])
+    ds = ds.reset_coords(["nC"])
 
     # sort by time
     ds = ds.sortby("time")

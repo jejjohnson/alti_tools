@@ -12,25 +12,16 @@ def parse_requirements_file(filename):
 
 # Optional Packages
 EXTRAS = {
-    "dev": [
-        "black",
-        "isort",
-        "pylint",
-        "flake8",
-    ],
-    "tests": [
-        "pytest",
-    ],
-    "docs": [
-        "furo",
-    ],
+    "dev": parse_requirements_file("environments/requirements-dev.txt"),
+    "tests": parse_requirements_file("environments/requirements-test.txt"),
 }
 
 
 # Get version number (function from GPyTorch)
 def read(*names, **kwargs):
     with io.open(
-        os.path.join(os.path.dirname(__file__), *names), encoding=kwargs.get("encoding", "utf8")
+        os.path.join(os.path.dirname(__file__), *names),
+        encoding=kwargs.get("encoding", "utf8"),
     ) as fp:
         return fp.read()
 
@@ -43,12 +34,12 @@ def find_version(*file_paths):
     raise RuntimeError("Unable to find version string.")
 
 
-version = find_version("ml_template", "__init__.py")
+version = find_version("alti_tools", "__init__.py")
 readme = open("README.md").read()
 
 
 setup(
-    name="ml_template",
+    name="alti_tools",
     version=version,
     # author="M2Lines",
     author_email="",
@@ -61,6 +52,8 @@ setup(
     #     "Documentation": "https://jaxsw.readthedocs.io/en/latest/",
     #     "Source": "https://github.com/jejjohnson/jaxsw",
     # },
+    setup_requires=["setuptools-yaml"],
+    metadata_yaml="environments/environment.yaml",
     install_requires=parse_requirements_file("environments/requirements.txt"),
     extras_require=EXTRAS,
     keywords=["ml template wandb"],
